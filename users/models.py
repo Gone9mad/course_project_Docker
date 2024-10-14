@@ -3,6 +3,7 @@ from django.db import models
 
 NULLABLE = {'blank': True, 'null': True}
 
+
 class User(AbstractUser):
     username = None
 

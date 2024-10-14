@@ -1,9 +1,5 @@
-'''
-    Permission - Предназначены для дополнительной проверки прав доступа.
-'''
-
-
 from rest_framework import permissions
+
 
 class IsModerators(permissions.BasePermission):
     ''' Функция кастомных прав доступа,

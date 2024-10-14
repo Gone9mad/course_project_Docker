@@ -36,4 +36,3 @@ class HabitLocationSerializers(serializers.ModelSerializer):
     class Meta:
         model = HabitLocation
         fields = '__all__'
-

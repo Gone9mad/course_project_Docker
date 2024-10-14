@@ -12,10 +12,6 @@ class HabitLocationTestCase(APITestCase):
     maxDiff = None
 
     def setUp(self):
-        '''
-            Cпециальный метод для установки
-            взаимодействия с данными для теста, например для заполнения первичных данныx.
-        '''
 
         self.user = User.objects.create(email='test@test.ru', password='1234', is_staff=True, is_superuser=True)
         self.client.force_authenticate(user=self.user)
@@ -39,10 +35,6 @@ class HabitsTestCase(APITestCase):
     maxDiff = None
 
     def setUp(self):
-        '''
-            Cпециальный метод для установки
-            взаимодействия с данными для теста, например для заполнения первичных данныx.
-        '''
         self.user = User.objects.create(email='test@test.ru', password='1234', is_staff=True, is_superuser=True)
         self.client.force_authenticate(user=self.user)
 
@@ -57,10 +49,6 @@ class HabitsTestCase(APITestCase):
                                                   duration=60, is_pleasant=False, is_publicity=True)
 
     def test_list_habit(self):
-        '''
-            Метод-тест, название которого должно
-            начинаться со специального слова test_, так гарантируется запуск метода как теста.
-        '''
         response = self.client.get(
             reverse('habits:habits-list')
         )
@@ -169,7 +157,6 @@ class HabitsTestCase(APITestCase):
                              'is_publicity': True
                          }
                          )
-
 
     def test_delete(self):
         response = self.client.delete(
