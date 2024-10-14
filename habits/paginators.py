@@ -1,12 +1,7 @@
-'''
-    Пагинация в Django REST framework — это процесс разделения большого набора данных на отдельные страницы
-    для удобного отображения и навигации по ним. Пагинация позволяет ограничить количество возвращаемых результатов
-    и предоставить клиенту механизм для получения дополнительных данных при необходимости.
-'''
 from rest_framework.pagination import PageNumberPagination
 
 
 class HabitsPagination(PageNumberPagination):
-    page_size = 5  # Количество элементов на странице
-    page_size_query_param = 'page_size'  # Параметр запроса для указания количества элементов на странице
-    max_page_size = 10  # Максимальное количество элементов на странице
+    page_size = 5
+    page_size_query_param = 'page_size'
+    max_page_size = 10

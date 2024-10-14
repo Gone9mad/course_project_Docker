@@ -5,12 +5,13 @@ from datetime import datetime
 from habits.models import Habits, HabitLocation
 from habits import validators
 
+
 class HabitsSerializer(serializers.ModelSerializer):
-    duration = serializers.IntegerField(validators=[validators.DurationValidator], required=False)
-    periodicity = serializers.IntegerField(validators=[validators.PeriodicityValidator], required=False)
-    related = serializers.PrimaryKeyRelatedField(validators=[validators.RelatedHabitValidator()], required=False,
-                                         queryset=Habits.objects.all())
-    day = serializers.DateField(validators=[validators.DayValidator], required=False)
+    duration = serializers.IntegerField(validators=[validators.DurationValidator()], required=False)
+    periodicity = serializers.IntegerField(validators=[validators.PeriodicityValidator()], required=False)
+    related_habit = serializers.PrimaryKeyRelatedField(validators=[validators.RelatedHabitValidator()], required=False,
+                                                       queryset=Habits.objects.all())
+    day = serializers.DateField(validators=[validators.DayValidator()], required=False)
 
     class Meta:
         model = Habits
@@ -30,7 +31,9 @@ class HabitsSerializer(serializers.ModelSerializer):
 
         return attrs
 
+
 class HabitLocationSerializers(serializers.ModelSerializer):
     class Meta:
         model = HabitLocation
         fields = '__all__'
+

@@ -28,24 +28,21 @@ class HabitLocationTestCase(APITestCase):
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-        self.assertEqual(response.json(),
-                          {
+        self.assertEqual(response.json(), {
                               'id': HabitLocation.objects.last().pk,
                               'location': 'test'
                           }
-                          )
+                         )
 
 
 class HabitsTestCase(APITestCase):
     maxDiff = None
-
 
     def setUp(self):
         '''
             Cпециальный метод для установки
             взаимодействия с данными для теста, например для заполнения первичных данныx.
         '''
-
         self.user = User.objects.create(email='test@test.ru', password='1234', is_staff=True, is_superuser=True)
         self.client.force_authenticate(user=self.user)
 
@@ -64,7 +61,6 @@ class HabitsTestCase(APITestCase):
             Метод-тест, название которого должно
             начинаться со специального слова test_, так гарантируется запуск метода как теста.
         '''
-
         response = self.client.get(
             reverse('habits:habits-list')
         )
@@ -157,7 +153,6 @@ class HabitsTestCase(APITestCase):
         )
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-
         self.assertEqual(response.json(),
                          {
                              'id': self.first_habit.pk,
@@ -176,41 +171,9 @@ class HabitsTestCase(APITestCase):
                          )
 
 
-
-
     def test_delete(self):
         response = self.client.delete(
             reverse('habits:habits-destroy', args=[self.first_habit.pk])
         )
 
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-
-
-"""
-                          
-        def test_create(self):
-        response = self.client.post(
-            reverse('habits:habits-create'),
-            data={'time': '16:00:00', 'action': 'test', 'periodicity': 1, 'reward': 'test',
-                  'duration': 70, 'is_pleasant': False, 'is_publicity': True}
-        )
-
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-
-        self.assertEqual(response.json(),
-                          {
-                              'id': Habits.objects.last().pk,
-                              'owner': self.user.pk,
-                              'location': self.location.pk,
-                              'time': '16:00:00',
-                              'action': "test",
-                              'related_habit': None,
-                              'periodicity': 1,
-                              'reward': 'test',
-                              'duration': 70,
-                              'day': datetime.utcnow().date().strftime("%Y-%m-%d"),
-                              'is_pleasant': False,
-                              'is_publicity': True
-                          }
-                          )
-"""

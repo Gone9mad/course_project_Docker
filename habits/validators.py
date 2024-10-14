@@ -15,6 +15,7 @@ class DurationValidator:
         if value > 120:
             raise ValidationError('Duration should not exceed 120 secund.')
 
+
 class PeriodicityValidator:
 
     def __call__(self, value):
