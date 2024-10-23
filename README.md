@@ -21,4 +21,5 @@ Celery
 Swagger schema/swagger-ui
 Redoc schema/redoc/
 Как запустить проект
-Для запуска проекта необходимо выполнить следующие шаги:
+
+Создание и последующий запуск контейнера командой docker-compose up -d --build
